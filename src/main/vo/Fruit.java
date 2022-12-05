@@ -1,8 +1,10 @@
-package vo.base;
+package main.vo;
 
 public class Fruit {
 
     private Double discount = 1.0;//折扣
+
+    private String name = "水果";
 
     private Integer price = 0;//原价
 
@@ -12,17 +14,26 @@ public class Fruit {
 
     protected Fruit(){
     }
-    protected Fruit(Integer price){
+    public Fruit(String name, Integer price){
+        this.setName(name);
         this.setPrice(price);
     }
-    protected Fruit(Integer price, Double discount){
+    public Fruit(Integer price, Double discount){
         this.setPrice(price);
         this.setDiscount(discount);
     }
-    protected Fruit (Integer price,Double discount, Integer num){
+    public Fruit (Integer price,Double discount, Integer num){
         this.setPrice(price);
         this.setDiscount(discount);
         this.setNum(num);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Double getDiscount() {
