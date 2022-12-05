@@ -1,7 +1,8 @@
 package main.util;
 
-import main.vo.Fruit;
-import org.junit.Assert;
+import vo.Fruit;
+import util.CalcUtil;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.ArrayList;
 import java.util.Formatter;
@@ -17,18 +18,13 @@ class CalcUtilTest {
         Integer strawBerryPrice = 13;
         Integer mangoPrice = 20;
         Double discount = 0.8;
+        Integer appleNum = 12;
+        Integer strawBerryNum = 13;
+        Integer mangoNum = 14;
 
-        Scanner sc = new Scanner(System.in);
-        System.out.print("苹果的价格是"+applePrice);
-        System.out.print("，请输入购买苹果的数量：");
-        Integer appleNum = sc.nextInt();
-        System.out.print("草莓的价格是"+strawBerryPrice);
-        System.out.print("，请输入购买草莓的数量：");
-        Integer strawBerryNum = sc.nextInt();
-        System.out.print("芒果的价格是是"+mangoPrice);
-        System.out.print("，请输入购买芒果的数量：");
-        Integer mangoNum = sc.nextInt();
-        sc.close();
+        System.out.println("苹果的价格是"+applePrice+"，购买苹果的数量是："+appleNum);
+        System.out.println("草莓的价格是"+strawBerryPrice+"，购买草莓的数量是："+strawBerryNum);
+        System.out.println("芒果的价格是"+mangoPrice+"，购买芒果的数量是："+mangoNum);
 
         /* 1、有一家超市，出售苹果和草莓。其中苹果 8 元/斤，草莓 13 元/斤。
         现在顾客 A 在超市购买了若干斤苹果和草莓，需要计算一共多少钱？
@@ -44,7 +40,7 @@ class CalcUtilTest {
         //商品总价A
         Double sumA = CalcUtil.getSumPrice(customerA);
         Double manualA = ((applePrice * appleNum) + (strawBerryPrice * strawBerryNum)) * 1.0;//手动验证计算结果
-        Assert.assertEquals(new Formatter().format("%.2f",manualA),sumA);
+        Assertions.assertEquals(new Formatter().format("%.2f",manualA).toString(),new Formatter().format("%.2f",sumA).toString());
         System.out.println("A顾客商品总价："+sumA);
 
 
@@ -61,7 +57,7 @@ class CalcUtilTest {
         Double sumB = CalcUtil.getSumPrice(customerB);
 
         Double manualB = ((applePrice * appleNum) + (strawBerryPrice * strawBerryNum) + (mangoPrice * mangoNum)) * 1.0;//手动验证计算结果
-        Assert.assertEquals(new Formatter().format("%.2f",manualB),sumB);
+        Assertions.assertEquals(new Formatter().format("%.2f",manualB).toString(),new Formatter().format("%.2f",sumB).toString());
         System.out.println("B顾客商品总价："+sumB);
 
 
@@ -78,7 +74,7 @@ class CalcUtilTest {
         Double sumC = CalcUtil.getSumPrice(customerC);
 
         Double manualC = (applePrice * appleNum) + (strawBerryPrice * strawBerryNum) * discount + (mangoPrice * mangoNum);//手动验证计算结果
-        Assert.assertEquals(new Formatter().format("%.2f",manualC),sumC);
+        Assertions.assertEquals(new Formatter().format("%.2f",manualC).toString(),new Formatter().format("%.2f",sumC).toString());
         System.out.println("C顾客商品总价："+sumC);
 
 
@@ -95,7 +91,7 @@ class CalcUtilTest {
         Double sumD = CalcUtil.promoteRule(preSumD,100.0,10.0);
 
         Double preManualD = manualC;//手动验证计算结果
-        Assert.assertEquals(new Formatter().format("%.2f",preManualD),preSumD);
+        Assertions.assertEquals(new Formatter().format("%.2f",preManualD).toString(),new Formatter().format("%.2f",preSumD).toString());
         System.out.println("D顾客商品优惠前总价："+ preSumD +"，优惠后总价："+ sumD);
 
 
