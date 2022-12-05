@@ -1,6 +1,6 @@
-package main.util;
+package util;
 
-import main.vo.Fruit;
+import vo.Fruit;
 
 import java.util.Formatter;
 import java.util.List;
